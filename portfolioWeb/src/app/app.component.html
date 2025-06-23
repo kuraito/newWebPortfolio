@@ -1,0 +1,218 @@
+<!-- Toolbar -->
+<mat-toolbar class="toolbar">
+  <span class="spacer"></span>
+  <!-- Menu Desktop -->
+  <nav class="nav-links">
+    <button mat-button (click)="scrollTo('hero')">Chi sono</button>
+    <button mat-button (click)="scrollTo('tecnologie')">Tecnologie</button>
+    <button mat-button (click)="scrollTo('esperienza')">Esperienza</button>
+    <button mat-button (click)="scrollTo('istruzione')">Istruzione</button>
+    <button mat-button (click)="scrollTo('progetti')">Progetti</button>
+    <button mat-button (click)="scrollTo('altro')">Altro</button>
+  </nav>
+  <!-- Menu Mobile Button -->
+  <button class="mobile-menu-button" (click)="toggleMobileMenu()">
+    <span class="menu-icon">☰</span>
+  </button>
+</mat-toolbar>
+
+<!-- Menu Mobile -->
+<div class="mobile-menu" [class.active]="isMobileMenuOpen">
+  <button mat-button (click)="scrollToMobile('hero')">Chi sono</button>
+  <button mat-button (click)="scrollToMobile('tecnologie')">Tecnologie</button>
+  <button mat-button (click)="scrollToMobile('esperienza')">Esperienza</button>
+  <button mat-button (click)="scrollToMobile('istruzione')">Istruzione</button>
+  <button mat-button (click)="scrollToMobile('progetti')">Progetti</button>
+  <button mat-button (click)="scrollToMobile('altro')">Altro</button>
+</div>
+
+<!-- Contenuto principale -->
+<div class="main-content">
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <img src="https://media.licdn.com/dms/image/v2/D4D03AQGa3oljS_YaAw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1732482443487?e=1755734400&v=beta&t=jjUZNopn9fJl7xBXU9DuZcwjxfMWf8jxR7sCLdRXZlE" alt="Foto profilo" class="profile-pic" />
+      <h1>{{ name }}</h1>
+      <h2>{{ subtitle }}</h2>
+      <a class="hero-button" (click)="scrollTo('contatti')">Contattami</a>
+      <a 
+        href="cv.pdf" 
+        download="CV_Giuseppe_Sabia.pdf" 
+        class="hero-button" 
+        aria-label="Scarica il CV">
+        Scarica il CV
+      </a>
+    </div>
+  </section>
+
+  <main class="sections">
+    <section id="tecnologie" class="fade-in-section">
+      <h2 class="section-title">Tecnologie</h2>
+      <div class="filter-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Filtra per categoria</mat-label>
+          <mat-select [(ngModel)]="selectedCategory" (selectionChange)="filterTechnologies()">
+            <mat-option value="all">🌐 Tutte le tecnologie</mat-option>
+            <mat-option value="frontend">🎨 Frontend</mat-option>
+            <mat-option value="backend">🖥️ Backend</mat-option>
+            <mat-option value="database">🗄️ Database</mat-option>
+            <mat-option value="tools">🛠️ Tools</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>    <div class="technology-cards">
+        <mat-card *ngFor="let tech of filteredTechnologies">
+          <img [src]="tech.logo" [alt]="tech.name" class="tech-logo" />
+          <mat-card-title>{{tech.name}}</mat-card-title>
+        </mat-card>
+      </div>
+    </section>
+    <!-- Sezione Esperienze timeline originale -->
+<section id="esperienza" class="content-section visible">
+  <h2 class="section-title">Esperienze</h2>
+  <div class="timeline">
+    <div class="timeline-item" *ngFor="let exp of esperienze">
+      <div class="timeline-content">
+        <h3>{{ exp.titolo }}</h3>
+        <p class="exp-luogo">{{ exp.luogo }}</p>
+        <p class="exp-desc">{{ exp.descrizione }}</p> <br>
+        <span class="exp-date-text">{{ exp.periodo }}</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="altre-exp-title">Altre esperienze di lavoro:</h3>
+  <div class="timeline altre-exp-timeline">
+    <div class="timeline-item" *ngFor="let exp of altreEsperienze">
+      <div class="timeline-content">
+        <h4>{{ exp.titolo }}</h4>
+        <p class="exp-luogo">{{ exp.luogo }}</p>
+        <p class="exp-desc">{{ exp.descrizione }}</p> <br>
+        <span class="exp-date-text">{{ exp.periodo }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="istruzione" class="education-section content-section visible">
+<section id="istruzione" class="education-section content-section visible">
+  <h2 class="section-title">Istruzione</h2>
+
+  <div class="education-item">
+    <div class="degree">
+      <h3>Laurea in Scienze e Tecnologie Informatiche</h3>
+      <p class="university">
+        <a href="https://www.di.unisa.it/" target="_blank" rel="noopener" style="color:#58a6ff;text-decoration:underline;display:inline-flex;align-items:center;gap:6px;">
+          Universit&#39; degli Studi di Salerno
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px;vertical-align:middle;"><path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </p>
+      <p class="periodo">2019 - 2024</p>
+      <p>
+Il mio percorso di studi in Informatica mi ha permesso di acquisire solide basi teoriche e pratiche, sviluppando al contempo un approccio logico e sistematico alla risoluzione dei problemi, tipico del pensiero computazionale.
+      </p>
+      <button class="toggle-button" (click)="showCorsi = !showCorsi">
+        {{ showCorsi ? 'Nascondi corsi' : 'Corsi principali' }}
+      </button>
+      <ul *ngIf="showCorsi" class="course-list">
+        <li>Basi di Dati</li>
+        <li>Ingegneria del Software</li>
+        <li>Tecnologie Web</li>
+        <li>Programmazione Distribuita</li>
+        <li>Programmazione 1 in C e Strutture Dati</li>
+        <li>Programmazione Object Oriented</li>
+        <li>Algoritmi</li>
+        <li>Programmazione Mobile</li>
+        <li>Architettura degli elaboratori</li>
+        <li>Inglese B2</li>
+        <li>Reti</li>
+        <li>
+          <a href="https://corsi.unisa.it/uploads/rescue/__piano-studi-cds/2024/05121.pdf" target="_blank" rel="noopener" style="color:#58a6ff;text-decoration:underline;">Altro...</a>
+        </li>
+      </ul>
+      <p class="tesi">
+        <strong>Tesi:</strong> Un approccio su BPMN per la valutazione della qualità dei dati
+        nell ambito dello sviluppo di un tool per il self check-in.
+      </p>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="degree">
+      <h3>Diploma Tecnico - Elettronica Industriale</h3>
+      <p class="periodo">2014 - 2019</p>
+    </div>
+  </div>
+</section>
+
+<section id="progetti" class="content-section visible">
+  <h2 class="section-title">Progetti personali e universitari</h2>
+  <div class="projects-list">    <div *ngFor="let progetto of progetti" class="project-card dark-card" [attr.data-project]="progetto.titolo">
+      <h3>{{ progetto.titolo }}</h3>
+      <p>{{ progetto.descrizione }}</p>
+      <div class="tech-logos">
+        <img *ngFor="let tech of progetto.tecnologie" [src]="tech.logo" [alt]="tech.nome" class="tech-icon" />
+      </div>
+      <a *ngIf="progetto.githubLink" [href]="progetto.githubLink" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+
+<section id="altro" class="content-section fade-in-section altro-section visible">
+  <h2 class="section-title">Altro</h2>
+
+  <!-- 🔹 Sottosezione: Volontariato -->
+  <article class="altro-sottosezione volontariato">
+    <h3 class="altro-titolo">Esperienze di volontariato</h3>
+    <p>
+      <strong>Donatore di sangue volontario</strong> – AVIS (Associazione Volontari Italiani del Sangue)
+    </p>
+  </article>
+
+  <!-- 🔹 Sottosezione: Interessi e altre esperienze -->
+  <article class="altro-sottosezione interessi">
+    <h3 class="altro-titolo">Altre esperienze e interessi</h3>
+    <p>
+      Da sempre un appassionato di tech e di molti altri argomenti, ho iniziato a esplorare il mondo digitale
+      fin da piccolo tramite forum e community online.
+    </p>
+    <p>
+      Ho creato e gestito canali e pagine su <strong>YouTube</strong>, <strong>Telegram</strong> e <strong>Instagram</strong>,
+      sviluppando competenze nella comunicazione digitale e nella gestione dei contenuti.
+    </p>
+    <p>
+      Durante l’università ho svolto lavori occasionali in settori diversi dall’informatica, che mi hanno aiutato
+      a migliorare <strong>soft skills</strong> come adattabilità, lavoro in team e gestione del tempo.
+    </p>
+  </article>
+</section>
+
+
+
+
+<section id="contatti" class="content-section fade-in-section contatti-section visible">
+  <h2 class="section-title">Contatti</h2>
+  <div class="contacts-grid">
+    <a class="contact-btn email" href="mailto:giusaff99@gmail.com" target="_blank" rel="noopener" aria-label="Email">
+      <span class="contact-icon">✉️</span>
+      <span class="contact-label">Email</span>
+    </a>
+    <a class="contact-btn github" href="https://github.com/kuraito" target="_blank" rel="noopener" aria-label="GitHub">
+      <span class="contact-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z" fill="#fff"/>
+        </svg>
+      </span>
+      <span class="contact-label">GitHub</span>
+    </a>
+    <a class="contact-btn linkedin" href="https://www.linkedin.com/in/giuseppe-sabia-2a5888239/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <span class="contact-icon">💼</span>
+      <span class="contact-label">LinkedIn</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- Footer
+<footer class="footer">
+  <p>&copy; 2025 TuoNome.dev</p>
+</footer> -->
