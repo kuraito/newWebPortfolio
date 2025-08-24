@@ -15,19 +15,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Setup Node.js (versione 18, puoi cambiare se serve)
+      # 2️⃣ Setup Node.js (versione 20 consigliata per Angular 17+)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       # 3️⃣ Build Angular
       - name: Build Angular for production
         run: |
           cd portfolioWeb                     # Spostati nella cartella del progetto
           npm install                          # Installa le dipendenze
-          npm run build -- --project portfolioWeb --configuration production --base-href /newWebPortfolio/
-          # --base-href /newWebPortfolio/ è necessario per GitHub Pages
+          npm run build -- --project=portfolioWeb --configuration=production --base-href=/newWebPortfolio/
+          # --base-href=/newWebPortfolio/ è necessario per GitHub Pages
 
       # 4️⃣ Deploy su GitHub Pages
       - name: Deploy to GitHub Pages
