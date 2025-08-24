@@ -1,11 +1,11 @@
 name: Deploy Angular PortfolioWeb
 
-# Quando far partire il workflow
+# Trigger automatico ad ogni push su main e possibilità di esecuzione manuale
 on:
   push:
     branches:
-      - main   # Trigger automatico ad ogni push sulla branch 'main'
-  workflow_dispatch:  # Permette di eseguire manualmente il workflow
+      - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -29,10 +29,10 @@ jobs:
           npm install
           npm run build -- --project=portfolioWeb --configuration=production --base-href=/newWebPortfolio/
 
-      # 4️⃣ Deploy su GitHub Pages (forza la branch gh-pages)
+      # 4️⃣ Deploy su GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Usa il token automatico con permessi Read & Write
-          publish_dir: ./portfolioWeb/dist/portfolio-web
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Usa il token automatico
+          publish_dir: ./portfolioWeb/dist/portfolio-web  # Contiene direttamente index.html e tutti i file
           force_orphan: true  # Ricrea la branch gh-pages da zero
