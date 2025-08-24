@@ -1,6 +1,6 @@
 name: Deploy Angular PortfolioWeb  # Nome del workflow
 
-# Quando deve partire il workflow
+# Quando far partire il workflow
 on:
   push:
     branches:
@@ -8,34 +8,30 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest  # Sistema operativo della macchina virtuale che esegue il workflow
+    runs-on: ubuntu-latest  # Sistema operativo della macchina virtuale
 
     steps:
-      # Clona il repository
+      # 1️⃣ Clona il repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Imposta Node.js (versione 18)
+      # 2️⃣ Setup Node.js (versione 18, puoi cambiare se serve)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Installa tutte le dipendenze del progetto
-      - name: Install dependencies
-        run: npm install
-
-      # Builda il progetto Angular in modalità produzione
+      # 3️⃣ Build Angular
       - name: Build Angular for production
         run: |
-          cd portfolioWeb
-          npm install
+          cd portfolioWeb                     # Spostati nella cartella del progetto
+          npm install                          # Installa le dipendenze
           npm run build -- --project portfolioWeb --configuration production --base-href /newWebPortfolio/
+          # --base-href /newWebPortfolio/ è necessario per GitHub Pages
 
-
-      # Deploy su GitHub Pages
+      # 4️⃣ Deploy su GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Token automatico per pubblicare
-          publish_dir: ./dist/portfolioWeb        # Cartella generata dal build Angular
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Token automatico per il deploy
+          publish_dir: ./portfolioWeb/dist/portfolioWeb  # Cartella generata dal build Angular
