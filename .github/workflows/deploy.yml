@@ -12,17 +12,17 @@ jobs:
     runs-on: ubuntu-latest  # Sistema operativo della macchina virtuale per il workflow
 
     steps:
-      # 1️⃣ Clona il repository
+      # 1 Clona il repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Setup Node.js
+      # 2️ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20  # Versione consigliata per Angular 17+
 
-      # 3️⃣ Build Angular
+      # 3️ Build Angular
       - name: Build Angular for production
         run: |
           cd portfolioWeb                       # Spostati nella cartella del progetto
@@ -33,7 +33,7 @@ jobs:
           # --base-href=/newWebPortfolio/ -> necessario per GitHub Pages
           npm run build -- --project=portfolioWeb --configuration=production --base-href=/newWebPortfolio/
 
-      # 4️⃣ Deploy su GitHub Pages
+      # 4️ Deploy su GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
