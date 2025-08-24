@@ -55,7 +55,7 @@ export class AppComponent {
   isMobileMenuOpen = false;
 
   readonly name = 'Giuseppe Sabia';
-  readonly subtitle = 'Full Stack Developer | UI/UX Designer | Tech Enthusiast | Problem Solver';
+  readonly subtitle = 'Software Developer | Tech Enthusiast | Problem Solver';
 
   showCorsi = false;
 
@@ -140,13 +140,13 @@ export class AppComponent {
   esperienze: Esperienza[] = [
     {
       periodo: 'Febbraio 2025 - Presente',
-      titolo: 'Full Stack Developer',
+      titolo: 'Software Developer',
       descrizione: 'Ho lavorato su progetti Angular, realizzando interfacce moderne e responsive. Sviluppato e gestito il backend in Python utilizzando il framework Flask, integrando query SQL a un database PostgreSQL. ',
       luogo: 'Cassa Edile di Torino'
     },
     {
       periodo: 'Luglio 2023 - Settembre 2023',
-      titolo: 'Stage - Full Stack Dev',
+      titolo: 'Web Developer',
       descrizione: 'Ho siluppato un sistema di self check-in per strutture ricettive. Utilizzando come principali tecnologie PHP, cURL, Html, JavaScript e Bootstrap.',
       luogo: 'InReception Srl'
     },
@@ -180,20 +180,26 @@ export class AppComponent {
     { name: 'CSS', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg', category: 'frontend' },
     { name: 'JavaScript', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png', category: 'frontend' },
     { name: 'TypeScript', logo: 'https://cdn.worldvectorlogo.com/logos/typescript.svg', category: 'frontend' },
-    { name: 'Angular', logo: 'https://angular.io/assets/images/logos/angular/angular.svg', category: 'frontend' },
+  { name: 'Angular', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg', category: 'frontend' },
     { name: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', category: 'frontend' },
+    { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', category: 'frontend' },
+  { name: 'Tailwind CSS', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg', category: 'frontend' },
     { name: 'PHP', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg', category: 'backend' },
     { name: 'Python', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', category: 'backend' },
     { name: 'Java', logo: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg', category: 'backend' },
     { name: 'Flask', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg', category: 'backend' },
     { name: 'cURL', logo: 'https://curl.se/logo/curl-transparent.png', category: 'backend' },
+  { name: 'Node.js', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg', category: 'backend' },
+    { name: 'Express', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', category: 'backend' },
     { name: 'MySQL', logo: 'https://www.mysql.com/common/logos/logo-mysql-170x115.png', category: 'database' },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', category: 'database' },
+    { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', category: 'database' },
     { name: 'C', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg', category: 'lower level' },
     { name: 'Git', logo: 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png', category: 'tools' },
     { name: 'Linux', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png', category: 'tools' },
     { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', category: 'tools' },
     { name: 'Canva', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg', category: 'tools' }
+    ,{ name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', category: 'tools' }
   ];
 
   filteredTechnologies: Technology[] = this.technologies;
