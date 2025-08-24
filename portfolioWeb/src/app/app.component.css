@@ -1,3 +1,17 @@
+.university, .degree, .education-item {
+  pointer-events: auto !important;
+}
+.unisa-link {
+  color: #58a6ff !important;
+  text-decoration: underline !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  pointer-events: auto !important;
+  z-index: 10;
+  position: relative;
+}
 :host {
   display: block;
   background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
