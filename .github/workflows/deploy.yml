@@ -1,15 +1,15 @@
-name: Deploy Angular PortfolioWeb
+name: Deploy Angular PortfolioWeb  # Nome del workflow
 
-# Trigger automatico ad ogni push su main e possibilità di esecuzione manuale
+# Trigger del workflow
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main   # Esegue il workflow ad ogni push su main
+  workflow_dispatch:  # Permette di far partire il workflow manualmente dall'interfaccia GitHub
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Sistema operativo della macchina virtuale per il workflow
 
     steps:
       # 1️⃣ Clona il repository
@@ -20,19 +20,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 20  # Versione consigliata per Angular 17+
 
       # 3️⃣ Build Angular
       - name: Build Angular for production
         run: |
-          cd portfolioWeb
-          npm install
+          cd portfolioWeb                       # Spostati nella cartella del progetto
+          npm install                           # Installa tutte le dipendenze
+          # Esegui la build Angular per produzione
+          # --project=portfolioWeb -> progetto da buildare
+          # --configuration=production -> build ottimizzata per produzione
+          # --base-href=/newWebPortfolio/ -> necessario per GitHub Pages
           npm run build -- --project=portfolioWeb --configuration=production --base-href=/newWebPortfolio/
 
       # 4️⃣ Deploy su GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Usa il token automatico
-          publish_dir: ./portfolioWeb/dist/portfolio-web  # Contiene direttamente index.html e tutti i file
-          force_orphan: true  # Ricrea la branch gh-pages da zero
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Token automatico con permessi Read & Write
+          publish_dir: ./portfolioWeb/dist/portfolio-web/browser  # Cartella che contiene index.html
+          force_orphan: true  # Ricrea la branch gh-pages da zero, evitando conflitti con vecchi deploy
