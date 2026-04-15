@@ -4,26 +4,26 @@
    CSS custom properties cascade to every child element.
    ═══════════════════════════════════════════════════════════════ */
 :host {
-  /* Backgrounds — slightly green-tinted dark palette */
-  --bg:          #070907;   /* page background           */
-  --bg-surface:  #0c0f0c;   /* section card background   */
-  --bg-elevated: #111511;   /* inner card / hover state  */
-  --bg-input:    #0f130f;   /* form field background     */
+  /* Backgrounds — slightly blue-tinted dark palette */
+  --bg:          #06080f;   /* page background           */
+  --bg-surface:  #0b0d18;   /* section card background   */
+  --bg-elevated: #10131f;   /* inner card / hover state  */
+  --bg-input:    #0d1020;   /* form field background     */
 
-  /* Text — phosphor green scale */
-  --text-hi:     #c8e6c8;   /* primary text              */
-  --text-mid:    #6a996a;   /* secondary / labels        */
-  --text-lo:     #3a5c3a;   /* muted / timestamps        */
+  /* Text — cool blue-white scale */
+  --text-hi:     #d8e8ff;   /* primary text              */
+  --text-mid:    #5a7ea8;   /* secondary / labels        */
+  --text-lo:     #2e4d6e;   /* muted / timestamps        */
 
-  /* Phosphor green accent */
-  --green:       #3dff7a;
-  --green-dim:   rgba(61, 255, 122, 0.07);
-  --green-glow:  rgba(61, 255, 122, 0.18);
-  --green-glow-text: 0 0 10px rgba(61, 255, 122, 0.45);
+  /* Terminal blue accent */
+  --green:       #4db8ff;
+  --green-dim:   rgba(77, 184, 255, 0.07);
+  --green-glow:  rgba(77, 184, 255, 0.18);
+  --green-glow-text: 0 0 10px rgba(77, 184, 255, 0.40);
 
   /* Borders */
-  --border:      rgba(61, 255, 122, 0.10);
-  --border-hi:   rgba(61, 255, 122, 0.28);
+  --border:      rgba(77, 184, 255, 0.10);
+  --border-hi:   rgba(77, 184, 255, 0.28);
 
   /* Typography */
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -35,8 +35,8 @@
 
   /* ── Base styles (hardcoded fallbacks alongside var() calls) ── */
   display: block;
-  background: #070907;
-  color: #c8e6c8;
+  background: #06080f;
+  color: #d8e8ff;
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   line-height: 1.65;
 }
@@ -255,7 +255,7 @@
 
 .prompt-path   { color: var(--green); }
 .prompt-sep    { color: var(--text-lo); }
-.prompt-branch { color: #ff9e57; }   /* orange branch name — subtle contrast */
+.prompt-branch { color: #7ee787; }   /* green branch name — contrasto col blu */
 .prompt-arrow  { color: var(--text-mid); }
 .prompt-cmd    { color: var(--text-hi); }
 

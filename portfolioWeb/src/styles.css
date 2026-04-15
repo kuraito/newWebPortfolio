@@ -2,16 +2,16 @@
 html, body {
   height: 100%;
   margin: 0;
-  background: #070907;
-  color: #c8e6c8;
+  background: #06080f;
+  color: #d8e8ff;
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
 }
 
 /* Neutralize Angular Material's light-theme typography overrides */
 .mat-typography,
 .mat-app-background {
-  background: #070907 !important;
-  color: #c8e6c8 !important;
+  background: #06080f !important;
+  color: #d8e8ff !important;
 }
 
 /* Custom cursor (preserved from original) */
