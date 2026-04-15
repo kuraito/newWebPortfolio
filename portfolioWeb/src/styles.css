@@ -1,9 +1,20 @@
-html, body { 
-  height: 100%; 
-  margin: 0; 
-  font-family: Roboto, "Helvetica Neue", sans-serif; 
+/* Global base — sets the dark foundation before Angular loads */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #070907;
+  color: #c8e6c8;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
 }
 
+/* Neutralize Angular Material's light-theme typography overrides */
+.mat-typography,
+.mat-app-background {
+  background: #070907 !important;
+  color: #c8e6c8 !important;
+}
+
+/* Custom cursor (preserved from original) */
 html, body, * {
-    cursor: url('https://kuraito.github.io/newWebPortfolio/cursor.png'), auto;
+  cursor: url('https://kuraito.github.io/newWebPortfolio/cursor.png'), auto;
 }
